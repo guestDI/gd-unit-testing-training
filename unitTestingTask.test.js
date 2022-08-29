@@ -9,7 +9,7 @@ describe('Date formats', () => {
     beforeAll(() => {
         jest
             .useFakeTimers()
-            .setSystemTime(new Date(1661767962000))
+            .setSystemTime(new Date(1661775002000)) // Monday, August 29, 2022 12:10:02 PM
     })
     
     afterAll(() => {

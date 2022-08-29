@@ -41,11 +41,11 @@ export const tokenMocks = [
     },
     {
         token: 'ZZ',
-        value: '+0200'
+        value: '+0000'
     },
     {
         token: 'Z',
-        value: '+02:00'
+        value: '+00:00'
     },
     {
         token: 'H',
@@ -65,7 +65,7 @@ export const tokenMocks = [
     },
     {
         token: 'mm',
-        value: '12'
+        value: '10'
     },
     {
         token: 'A',
