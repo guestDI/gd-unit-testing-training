@@ -16,40 +16,40 @@ describe('Date formats', () => {
         jest.useRealTimers()
     })
 
-    it('returns current date based on formatter', () => {
+    it('should return current date based on formatter', () => {
         expect(unitTestingTask('ISODate')).toBe('2022-08-29')
     })
 
-    it('returns custom date based on formatter', () => {
+    it('should return custom date based on formatter', () => {
         expect(unitTestingTask('ISODate', '2022-07-20T00:00:00')).toBe('2022-07-20')
     })
 
-    it('throws an error if format is undefined', () => {
+    it('should throw an error if format is undefined', () => {
         expect(() => { unitTestingTask(undefined, new Date()) }).toThrow(new TypeError(formatError));
     })
 
-    it('throws an error if date param is passed as null', () => {
+    it('should throw an error if date param is passed as null', () => {
         expect(() => { unitTestingTask('MM', null) }).toThrow(new TypeError(dateError));
     })
 
-    it('returns default formatters', () => {
+    it('should return default formatters', () => {
         expect(unitTestingTask.formatters()).toStrictEqual(['ISODate', 'ISOTime', 'ISODateTime', 'ISODateTimeTZ'])
     })
 
-    it('creates custom formatter', () => {
+    it('should create custom formatter', () => {
         unitTestingTask.register('CustomFormatter', 'YYYY-MM')
         expect(unitTestingTask.formatters()).toStrictEqual(['ISODate', 'ISOTime', 'ISODateTime', 'ISODateTimeTZ', 'CustomFormatter'])
     })
 
-    describe('tokens functions', () => {
+    describe('tokens', () => {
         tokenMocks.forEach(({token, value}) => {
-            it(`returns date in required format: ${token}`, () => {
+            it(`should return date in required format: ${token}`, () => {
                 expect(unitTestingTask(token, new Date())).toBe(value)
             })
         })
     })
 
-    describe('languages functions', () => {
+    describe('languages', () => {
         it('should return default language if no language provided', () => {
             expect(unitTestingTask.lang()).toBe(enToken)
         })
