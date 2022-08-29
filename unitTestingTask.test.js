@@ -3,6 +3,7 @@ import { tokenMocks } from './__fixtures__/mocks'
 
 const formatError = 'Argument `format` must be a string'
 const dateError = 'Argument `date` must be instance of Date or Unix Timestamp or ISODate String'
+const enToken = 'en'
 
 describe('Date formats', () => {
     beforeAll(() => {
@@ -50,32 +51,32 @@ describe('Date formats', () => {
 
     describe('languages functions', () => {
         it('should return default language if no language provided', () => {
-            expect(unitTestingTask.lang()).toBe('en')
+            expect(unitTestingTask.lang()).toBe(enToken)
         })
 
         it('should return default language if no options', () => {
-            expect(unitTestingTask.lang('de')).toBe('en')
+            expect(unitTestingTask.lang('de')).toBe(enToken)
         })
 
         it('should return correct meridiem in lowerCase for time after 11', () => {
-            expect(unitTestingTask._languages['en'].meridiem(12, true)).toBe('pm')
+            expect(unitTestingTask._languages[enToken].meridiem(12, true)).toBe('pm')
         })
 
         it('should return correct meridiem in upperCase for time after 11', () => {
-            expect(unitTestingTask._languages['en'].meridiem(12, false)).toBe('PM')
+            expect(unitTestingTask._languages[enToken].meridiem(12, false)).toBe('PM')
         })
 
         it('should return correct meridiem in upperCase for time before 11', () => {
-            expect(unitTestingTask._languages['en'].meridiem(10, false)).toBe('AM')
+            expect(unitTestingTask._languages[enToken].meridiem(10, false)).toBe('AM')
         })
 
         it('should return correct meridiem in the lowerCase for time before 11', () => {
-            expect(unitTestingTask._languages['en'].meridiem(10, true)).toBe('am')
+            expect(unitTestingTask._languages[enToken].meridiem(10, true)).toBe('am')
         })
 
         it('should return correct language different from default one', () => {
             unitTestingTask.lang('pl', {})
-            expect(unitTestingTask.lang('en')).toBe('en')
+            expect(unitTestingTask.lang(enToken)).toBe(enToken)
         })
     })
 })
